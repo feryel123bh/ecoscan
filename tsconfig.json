@@ -1,0 +1,33 @@
+{    "compilerOptions": {
+        "module":"commonjs",
+        "target": "ES2022",
+        "lib":["ES2022"],
+        "outDir": "./dist",
+        "sourceMap": true,
+        "removeComments": true,
+        "experimentalDecorators":true,
+        "emitDecoratorMetadata":true,
+        "esModuleInterop": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true ,
+        "strict": true,
+        "noImplicitOverride": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "noUncheckedIndexedAccess": true,
+        "strictPropertyInitialization": false
+    },
+    "include":["src/**/*.ts", "test/**/*.ts"],
+    "exclude":["node_modules","dist","web"],
+    "lint-staged": {
+        "*.ts": ["eslint --fix", "prettier --write"]
+    },
+    "jest": {
+        "moduleFileExtensions": ["js","json","ts"],
+        "rootDir":"src",
+        "testRegex": ".*\\.spec\\.ts$",
+        "transform": {"^.+\\.ts$":"ts-jest"},
+        "testEnvironment":"node"
+    }
+     
+}
