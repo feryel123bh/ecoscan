@@ -9,13 +9,14 @@ services:
    #appendonly: every write is saved to disk, so counters survive a restart
    command: ["redis-server", "--appendonly", "yes"]
    ports:
-    -"127.0.0.1:6379:6379" #localhost only : Redis is never exposed on the network
+    - "127.0.0.1:6380:6380" #localhost only : Redis is never exposed on the network
    volumes:
-    -redis-data:/data
-  healthcheck:
+     - redis-data:/data
+   healthcheck:
     test: ["CMD", "redis-cli", "ping"]
     interval: 5s
     timeout: 3s
     retries: 10
-  volumes:
-   redis-data:
+    
+volumes: 
+  redis-data:
