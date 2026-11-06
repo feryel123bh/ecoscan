@@ -4,6 +4,7 @@
         "lib":["ES2022"],
         "outDir":"./dist",
         "rootDir": "./",
+        "types": ["node", "jest"],
         "sourceMap": true,
         "removeComments": true,
         "experimentalDecorators":true,

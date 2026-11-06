@@ -48,7 +48,7 @@ export class EnvironmentVariables {
   IP_HASH_SALT: string;
 
   @IsEnum(AiProvider)
-  AI_PROVIDER: AiProvider.None;
+  AI_PROVIDER: AiProvider = AiProvider.None;
 
   /** Maximum number of IA calls per day, all users combined. */
   @Type(() => Number)

@@ -6,7 +6,7 @@ import { REDIS_CLIENT } from './redis.constants';
 
 /**
  * One shared Redis connection for the whole process.
- * @Global: any module can inject REDIS_CLIENT without importing RedisModule
+ * @Global: any module can inject REDIS_CLIENT without importing RedisModule.
  */
 @Global()
 @Module({
@@ -16,10 +16,10 @@ import { REDIS_CLIENT } from './redis.constants';
       inject: [ConfigService],
       useFactory: (config: ConfigService<EnvironmentVariables, true>): Redis =>
         new Redis(config.get('REDIS_URL', { infer: true }), {
-          //commands sent while (re)connecting wait in a short offline queue,
-          //so the first request after start-up does not fail. Each command is
-          //retried at most once, then rejected: callers add their own timmeout
-          //(see HealthController) so a request never hangs while Redis is down.
+          // Commands sent while (re)connecting wait in a short offline queue,
+          // so the first request after start-up does not fail. Each command is
+          // retried at most once, then rejected: callers add their own timeout
+          // (see HealthController) so a request never hangs while Redis is down.
           maxRetriesPerRequest: 1,
           connectTimeout: 2000,
         }),

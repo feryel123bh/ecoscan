@@ -8,7 +8,7 @@ export interface HealthReport {
 }
 
 /**
- * Health chack used by Docker, the hosting platform and monitoring tools.
+ * Health check used by Docker, the hosting platform and monitoring tools.
  * 200 = ready to serve.
  * 503= a dependency is down: stop sending traffic here.
  */
@@ -16,7 +16,7 @@ export interface HealthReport {
 export class HealthController {
   constructor(@Inject(REDIS_CLIENT) private readonly redis: Redis) {}
   @Get()
-  async chack(): Promise<HealthReport> {
+  async check(): Promise<HealthReport> {
     try {
       await withTimeout(this.redis.ping(), 1000);
       return { status: 'ok', redis: 'up' };
