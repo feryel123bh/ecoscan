@@ -1,4 +1,4 @@
-import 'reflect-metdata';
+import 'reflect-metadata';
 import { plainToInstance, Type } from 'class-transformer';
 import {
   IsEnum,
@@ -36,7 +36,7 @@ export class EnvironmentVariables {
   @IsInt()
   @Min(1)
   @Max(65535)
-  Port = 3001;
+  PORT = 3001;
 
   @IsString()
   @Matches(/^rediss?:\/\//, { message: 'REDIS_URL must start with redis:// or rediss://' })
@@ -48,7 +48,7 @@ export class EnvironmentVariables {
   IP_HASH_SALT: string;
 
   @IsEnum(AiProvider)
-  AI_PROVIDER: AiProvider.None;
+  AI_PROVIDER: AiProvider = AiProvider.None;
 
   /** Maximum number of IA calls per day, all users combined. */
   @Type(() => Number)
